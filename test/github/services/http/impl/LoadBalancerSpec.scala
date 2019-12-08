@@ -17,6 +17,17 @@ class LoadBalancerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting  
       val loadBalancer = app.injector.instanceOf[LoadBalancer]
       val response = loadBalancer.nextExecutor().execute("https://api.github.com")
       response.status
+    }
+
+    "executor should got cache response" in {
+      for(i <- Range(1,6)) {
+        val loadBalancer = app.injector.instanceOf[LoadBalancer]
+        val response = loadBalancer.nextExecutor().execute("https://api.github.com")
+//        if(i>1) {
+//          assert(response.status == 304)
+//        }
+        println(response.status)
+      }
 
     }
   }
