@@ -35,7 +35,21 @@
     + http cache must be configured for WSClient, github doesn't count to limit conditional request, thanks to that for large organisations client could repeat calls and finally he will be able to get response
 1. in case of unknown organization respond with 404 NOT FOUND
 1. github provides pagination due to possible large results, pagination is not in requirements but it seems reasonable to have it : optional
-1. tests            
+1. tests
+
+# usage instruction
+git clone https://github.com/tomasz-wozniak75/github-rank.git
+cd github-rank
+sbt "run 8080"
+
+in following link template change {org-name} on existing organisation and open in the browser
+http://localhost:8080/org/{org-name}/contributors
+
+e.g.
+http://localhost:8080/org/blue-veery-gmbh/contributors
+
+
+
       
     
      
