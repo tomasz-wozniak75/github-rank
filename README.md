@@ -12,7 +12,7 @@
 1. api is versioned, version could change
 1. hypermedia API, follow rules of hypermedia API -> discover not assume
 1. clients must assume redirection's
-1. pagination is using standard link header, app should use it two reasons:
+1. pagination is using standard link header, app should use it for two reasons:
     +  next page could be served different node
     +  thanks to link with rel = last, last call to page could be skipped
 1. rate limiting answer with http code 403(why not 429???) and rate limits headers which are per public api of github-rank
@@ -20,7 +20,7 @@
 1. Conditional requests - doesn't count to rate limits
 
 
-# design decisions
+#3 design decisions
 1. use play framework - decision based on popularity analysis 
 1. create service api which covers github-rank needs and hide complexity of entire github api
 1. provide implementation of service api as v3 api
@@ -31,7 +31,7 @@
     + it is not clear whu is required GH_TOKEN, from the github api perspective is not needed, limits are given in response, so there is an assumption that it is just exercise to make config
     + create "github http request executor" which will trace limit and it will respond with TOO MANY REQUEST   
     + github limit is per public ip, "github http request executor" could be create per one public IP if routing is possible with load balancer
-    + "github-rank enterprise version" there could be exposed endpoint to execute request to github and implementation of "github http request executor" to delegate request to another server which allows to create cluster :)
+    + "github-rank enterprise version" there could be exposed endpoint to execute request to github and implementation of "github http request executor" which delegates request to another server which allows to create cluster :) : optional
     + http cache must be configured for WSClient, github doesn't count to limit conditional request, thanks to that for large organisations client could repeat calls and finally he will be able to get response
 1. in case of unknown organization respond with 404 NOT FOUND
 1. github provides pagination due to possible large results, pagination is not in requirements but it seems reasonable to have it : optional
