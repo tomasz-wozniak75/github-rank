@@ -20,7 +20,7 @@
 1. Conditional requests - doesn't count to rate limits
 
 
-#3 design decisions
+# design decisions
 1. use play framework - decision based on popularity analysis 
 1. create service api which covers github-rank needs and hide complexity of entire github api
 1. provide implementation of service api as v3 api
