@@ -19,6 +19,6 @@ private class GithubRankingImpl @Inject()(val githubResource: GithubResource) ex
       }
     }
 
-    contributorsMap.values.toList.sortWith( _.contributions < _.contributions)
+    contributorsMap.values.toList.sortWith( _.contributions > _.contributions)
   }
 }
