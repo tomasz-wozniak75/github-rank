@@ -38,15 +38,15 @@
 1. tests
 
 # usage instruction
-git clone https://github.com/tomasz-wozniak75/github-rank.git
-cd github-rank
-sbt "run 8080"
+`git clone https://github.com/tomasz-wozniak75/github-rank.git`
+`cd github-rank`
+`sbt "run 8080"`
 
 in following link template change {org-name} on existing organisation and open in the browser
-http://localhost:8080/org/{org-name}/contributors
+`http://localhost:8080/org/{org-name}/contributors`
 
 e.g.
-http://localhost:8080/org/blue-veery-gmbh/contributors
+[blue-veery-gmbh contributions](http://localhost:8080/org/blue-veery-gmbh/contributors)
 
 
 
