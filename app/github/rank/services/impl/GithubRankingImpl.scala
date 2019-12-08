@@ -10,7 +10,7 @@ private class GithubRankingImpl @Inject()(val githubResource: GithubResource) ex
     val contributorsMap: Map[String, Contribution] = Map()
     val organisation = githubResource.getOrganisation(organisationName)
     for(repository <- organisation.repositories ){
-      for(contributoion <- repository.contributors){
+      for(contributoion <- repository.contributions){
         val previousContributionOption = contributorsMap.get(contributoion.name)
         previousContributionOption match{
           case Some(previousContribution) => contributorsMap(contributoion.name) = contributoion + previousContribution;
