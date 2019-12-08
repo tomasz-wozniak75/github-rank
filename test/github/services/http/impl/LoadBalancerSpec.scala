@@ -3,7 +3,6 @@ package github.services.http.impl
 import github.services.http.api.LoadBalancer
 import org.scalatestplus.play.PlaySpec
 import org.scalatestplus.play.guice.GuiceOneAppPerTest
-import play.api.test.Helpers.{contentType, status}
 import play.api.test.Injecting
 
 class LoadBalancerSpec extends PlaySpec with GuiceOneAppPerTest with Injecting  {
