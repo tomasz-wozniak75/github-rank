@@ -32,7 +32,7 @@ private class GithubResourceImpl @Inject()(config: Configuration, loadBalancer: 
     }
 
     val json = Json.parse(response.body)
-    val repoTemplate:JsString = (json \ "repos_url").get.asInstanceOf[JsString]
-    new OrganisationResourceImpl(name, url, repoTemplate.value)
+    val repoUrl:JsString = (json \ "repos_url").get.asInstanceOf[JsString]
+    new OrganisationResourceImpl(name, url, repoUrl.value, loadBalancer)
   }
 }

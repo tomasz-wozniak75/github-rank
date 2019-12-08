@@ -1,7 +1,5 @@
 package github.services.v3
 
-import github.rank.api.OrganisationNotFound
-import github.services.api.GithubResource
 import github.services.http.api.LoadBalancer
 import org.scalatestplus.play.PlaySpec
 import org.scalatestplus.play.guice.GuiceOneAppPerTest
