@@ -4,7 +4,7 @@ import github.services.api.{OrganisationResource, RepositoryResource}
 import github.services.http.api.LoadBalancer
 import play.api.libs.json.JsString
 
-private class OrganisationResourceImpl(name: String, url: String, repoUrl: String, loadBalancer: LoadBalancer) extends OrganisationResource{
+private class OrganisationResourceImpl(val name: String, url: String, repoUrl: String, loadBalancer: LoadBalancer) extends OrganisationResource{
   override def repositories: Iterator[RepositoryResource] = {
     new Iterator[RepositoryResource]{
       val itemsIterator = new PageItemsIterator(new LinkedPagesIterator(repoUrl, loadBalancer))
