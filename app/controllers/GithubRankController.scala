@@ -21,7 +21,7 @@ class GithubRankController @Inject()(cc: ControllerComponents, githubRanking: Gi
   }
 
   private def respondOrganisationNotFound(e: OrganisationNotFound)(implicit request: Request[_]) = {
-    NotFound(Json.toJson(e.organisationName))
+    NotFound(Json.toJson("unknown organisation" + e.organisationName))
   }
 
   private def respondToManyRequests(e: ToManyRequests)(implicit request: Request[_]) = {
