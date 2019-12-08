@@ -13,7 +13,7 @@ class GithubResourceImplSpec extends PlaySpec with GuiceOneAppPerTest with Injec
     "got exception for unknown org" in {
       val thrown = intercept[OrganisationNotFound] {
         val githubResource = app.injector.instanceOf[GithubResource]
-        githubResource.getOrganisation("dummy")
+        githubResource.getOrganisation("blue-veery-gmbh")
       }
       assert(thrown != null)
     }

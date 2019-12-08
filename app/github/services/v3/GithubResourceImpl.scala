@@ -27,6 +27,12 @@ private class GithubResourceImpl @Inject()(config: Configuration, loadBalancer: 
       throw OrganisationNotFound(name)
     }
 
-    null
+    if(response.status >= 400){
+      throw new IllegalStateException("github request failed :" +response.body)
+    }
+
+    val json = Json.parse(response.body)
+    val repoTemplate:JsString = (json \ "repos_url").get.asInstanceOf[JsString]
+    new OrganisationResourceImpl(name, url, repoTemplate.value)
   }
 }
