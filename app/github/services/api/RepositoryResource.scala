@@ -1,8 +1,8 @@
 package github.services.api
 
-import github.rank.api.Contributor
+import github.rank.api.Contribution
 
 trait RepositoryResource {
   val name: String
-  def contributors: Iterator[Contributor]
+  def contributors: Iterator[Contribution]
 }

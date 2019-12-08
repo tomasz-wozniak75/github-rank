@@ -11,7 +11,7 @@ class GithubRankController @Inject()(cc: ControllerComponents, githubRanking: Gi
   def getContributorsRanking(organisationName: String) = Action { implicit request => {
       try {
         val ranking = githubRanking.calculateRanking(organisationName)
-        implicit val contributorWrites = Json.writes[Contributor]
+        implicit val contributorWrites = Json.writes[Contribution]
         Ok(Json.toJson(ranking))
       } catch {
         case e: OrganisationNotFound => respondOrganisationNotFound(e)

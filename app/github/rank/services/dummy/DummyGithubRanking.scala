@@ -1,16 +1,16 @@
-package github.rank.impl.dummy
+package github.rank.services.dummy
 
-import github.rank.api.{Contributor, GithubRanking, OrganisationNotFound, RateLimit, ToManyRequests}
+import github.rank.api.{Contribution, GithubRanking, OrganisationNotFound, RateLimit, ToManyRequests}
 
 private class DummyGithubRanking extends GithubRanking{
   var counter = 0;
-  override def calculateRanking(organisationName: String): List[Contributor] = {
+  override def calculateRanking(organisationName: String): List[Contribution] = {
     if ("dummy-org" == organisationName) {
       counter += 1
       if(counter > 4) {
         throw ToManyRequests(RateLimit(3, 0, System.currentTimeMillis()))
       }
-      List(Contributor("john-simth", 75), Contributor("jan-kowalski", 25))
+      List(Contribution("john-simth", 75), Contribution("jan-kowalski", 25))
     }else{
       throw OrganisationNotFound(organisationName)
     }
