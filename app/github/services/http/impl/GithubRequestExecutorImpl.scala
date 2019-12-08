@@ -12,6 +12,7 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 
 private class GithubRequestExecutorImpl @Inject()(config: Configuration, wsClient: WSClient) extends RequestsExecutor with GithubRequestExecutor{
+  val gitHubUrl = config.get[String]("GH_URL")
   override val state: RequestsExecutorState = {
     val defaultRateLimit = config.get[String]("GH_TOKEN").toInt
     val ipResponse = execute("http://checkip.amazonaws.com/")
@@ -23,6 +24,7 @@ private class GithubRequestExecutorImpl @Inject()(config: Configuration, wsClien
     }
   }
 
+
   def execute(url: String): WSResponse = {
     val response = Await.result[WSResponse](wsClient.url(url).get(), Duration(30, TimeUnit.SECONDS))
     handleRateLimits(url, response)
@@ -30,7 +32,7 @@ private class GithubRequestExecutorImpl @Inject()(config: Configuration, wsClien
   }
 
   private def handleRateLimits(url: String, response: WSResponse) = {
-    if (url.startsWith("https://api.github.com")) {
+    if (url.startsWith(gitHubUrl)) {
       val rateLimit: Int = response.header("X-RateLimit-Limit").getOrElse[String](state.rateLimit.rateLimit + "").toInt
       val remainingLimit: Int = response.header("X-RateLimit-Remaining").getOrElse[String](state.rateLimit.remainingLimit + "").toInt
       val limitResetTime: Long = response.header("X-RateLimit-Reset").getOrElse[String](state.rateLimit.limitResetTime + "").toLong
