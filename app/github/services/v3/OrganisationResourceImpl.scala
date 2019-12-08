@@ -15,8 +15,8 @@ private class OrganisationResourceImpl(name: String, url: String, repoUrl: Strin
       override def next(): RepositoryResource = {
         val jsObject = itemsIterator.next()
         val repoName = (jsObject \ "name").get.asInstanceOf[JsString]
-        val contributorsUrl = (jsObject \ "contributors_url").get.asInstanceOf[JsString]
-        new RepositoryResourceImpl(repoName.value, contributorsUrl.value, loadBalancer)
+        val contributionsUrl = (jsObject \ "contributors_url").get.asInstanceOf[JsString]
+        new RepositoryResourceImpl(repoName.value, contributionsUrl.value, loadBalancer)
       }
     }
   }
