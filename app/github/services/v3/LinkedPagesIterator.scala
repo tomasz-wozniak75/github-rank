@@ -5,7 +5,7 @@ import java.util.NoSuchElementException
 import github.services.http.api.LoadBalancer
 import play.api.libs.ws.WSResponse
 
-class LinkedPagesIterator(var nextUrl: String, loadBalacer: LoadBalancer) extends Iterator[WSResponse]{
+private class LinkedPagesIterator(var nextUrl: String, loadBalacer: LoadBalancer) extends Iterator[WSResponse]{
   var response: WSResponse = null
 
   private def parseLinkHeader() {
@@ -40,7 +40,7 @@ class LinkedPagesIterator(var nextUrl: String, loadBalacer: LoadBalancer) extend
 
   override def hasNext: Boolean = {
     loadPage()
-    nextUrl != null
+    response != null
   }
 
   override def next(): WSResponse = {
