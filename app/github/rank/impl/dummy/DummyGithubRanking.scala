@@ -1,4 +1,4 @@
-package github.rank.services.dummy
+package github.rank.impl.dummy
 
 import github.rank.api.{Contributor, GithubRanking, OrganisationNotFound, RateLimit, ToManyRequests}
 

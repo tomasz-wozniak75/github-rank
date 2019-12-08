@@ -1,4 +1,4 @@
-package github.rank.services.dummy
+package github.rank.impl.dummy
 
 import com.google.inject.AbstractModule
 import github.rank.api.GithubRanking
