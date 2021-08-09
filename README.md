@@ -1,6 +1,6 @@
 # github-rank
 ## requirements 
-1. use GitHub REST API v3 (​ https://developer.github.com/v3/​ )
+1. use GitHub REST API v3 (​ https://developer.github.com/v3/​ ) [dada]
 1. return a list sorted by the number of contributions made by developer to all repositories for the given organization.
 1. respond to a GET request at port 8080 and address /org/{org_name}/contributors
 1. respond with JSON, which should be a list of contributors in the following format: { “name”: <contributor_login>, “contributions”: <no_of_contributions> }
